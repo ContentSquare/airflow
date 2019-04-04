@@ -3702,7 +3702,7 @@ class DAG(BaseDag, LoggingMixin):
             TI.dag_id == self.dag_id,
             TI.state == State.RUNNING,
         )
-        return qry.scalar() >= self.concurrency
+        return int(qry.scalar()) >= int(self.concurrency)
 
     @property
     @provide_session

@@ -1176,7 +1176,7 @@ class SchedulerJob(BaseJob):
                     "DAG %s has %s/%s running and queued tasks",
                     dag_id, current_task_concurrency, task_concurrency_limit
                 )
-                if current_task_concurrency >= task_concurrency_limit:
+                if int(current_task_concurrency) >= int(task_concurrency_limit):
                     self.log.info(
                         "Not executing %s since the number of tasks running or queued "
                         "from DAG %s is >= to the DAG's task concurrency limit of %s",
